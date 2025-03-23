@@ -49,6 +49,29 @@ def get_account_number() -> int:
 
     return account_number
 
+def get_amount() -> float:
+    """
+    Prompts the user to enter an amount to deposit, validates it, and
+    returns the amount as a float.
+
+    Returns:
+        float: The valid amount entered by the user.
+
+    Raises:
+        TypeError: If the input cannot be converted to a numeric type.
+        ValueError: If the amount is zero or a negative value.
+    """
+    amount_input = input("Enter an amount: ")
+    try:
+        amount = float(amount_input)
+    except ValueError:
+        raise TypeError("Amount must be a numeric type.")
+
+    if amount <= 0:
+        raise ValueError("Amount must be a value greater than zero.")
+
+    return amount
+
 def chatbot():
     """Performs the Chatbot functionality."""
     COMPANY_NAME = "PiXELL River Financial"
