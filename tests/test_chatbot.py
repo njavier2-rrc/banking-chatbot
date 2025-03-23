@@ -10,9 +10,48 @@ Example:
     python -m unittest tests/test_chatbot.py
 """
 
-__author__ = "COMP-1327 Faculty"
+__author__ = "Nicholas Javier"
 __version__ = "1.0.2025"
 
 from unittest import TestCase, main
 from unittest.mock import patch
-from src.chatbot import ACCOUNTS, VALID_TASKS
+from src.chatbot import get_account_number
+
+class TestChatbot(TestCase):
+    """Unit tests for chatbot functions."""
+
+    def test_get_account_number_type_error(self):
+        """
+        Test that a TypeError is raised when non-integer input is provided.
+        """
+        # Arrange
+        with patch('builtins.input', return_value='non_numeric_data'):
+            # Act and Assert
+            with self.assertRaises(TypeError) as context:
+                get_account_number()
+            self.assertEqual(str(context.exception), "Account number must be an int type.")
+
+    def test_get_account_number_value_error(self):
+        """
+        Test that a ValueError is raised when the account number does not exist.
+        """
+        # Arrange
+        with patch('builtins.input', return_value='112233'):
+            # Act and Assert
+            with self.assertRaises(ValueError) as context:
+                get_account_number()
+            self.assertEqual(str(context.exception), "Account number entered does not exist.")
+
+    def test_get_account_number_valid(self):
+        """
+        Test that a valid account number is returned when correct input is given.
+        """
+        # Arrange
+        with patch('builtins.input', return_value='123456'):
+            # Act
+            result = get_account_number()
+            # Assert
+            self.assertEqual(result, 123456)
+
+if __name__ == '__main__':
+    main()
