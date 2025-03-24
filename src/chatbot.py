@@ -126,7 +126,7 @@ def make_deposit(account_number: int, amount: float) -> str:
 
     ACCOUNTS[account_number]['balance'] += amount
 
-    return f"You have made a deposit of ${amount:.2f} to account {account_number}."
+    return f"You have made a deposit of ${amount:,.2f} to account {account_number}."
 
 def chatbot():
     """Performs the Chatbot functionality."""
