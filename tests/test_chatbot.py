@@ -15,7 +15,7 @@ __version__ = "1.0.2025"
 
 from unittest import TestCase, main
 from unittest.mock import patch
-from src.chatbot import get_account_number, get_amount, get_balance, make_deposit
+from src.chatbot import get_account_number, get_amount, get_balance, make_deposit, get_task
 
 
 class TestChatbot(TestCase):
@@ -214,6 +214,27 @@ class TestChatbot(TestCase):
         # Assert
         self.assertEqual(result, "You have made a deposit of $1,500.01 to account 123456.")
 
+    def test_get_task_invalid(self):
+        """
+        Test that a ValueError is raised when the task is invalid.
+        """
+        # Arrange
+        with patch('builtins.input', return_value='withdraw'):
+        # Act and Assert
+            with self.assertRaises(ValueError) as context:
+                get_task()
+            self.assertEqual(str(context.exception), '"withdraw" is an unknown task.')
+
+    def test_get_task_valid(self):
+        """
+        Test that a valid task is returned in lowercase when correct input is given.
+        """
+        # Arrange
+        with patch('builtins.input', return_value='BALANCE'):
+            # Act
+            result = get_task()
+            # Assert
+            self.assertEqual(result, 'balance')
 
 if __name__ == '__main__':
     main()
