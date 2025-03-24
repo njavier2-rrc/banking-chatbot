@@ -163,9 +163,10 @@ COMPANY_NAME = "PiXELL River Financial"
 # Print welcome message
 print(f"Welcome! I'm the {COMPANY_NAME} Chatbot! Let's get chatting!")
 
+# Loop to continuously prompt the user for tasks until they exit
 while True:
     try:
-        # Get the task
+        # Get the task from user input (balance/deposit/exit)
         task = get_task()
 
         # Check if task is exit
@@ -192,7 +193,7 @@ while True:
             print(balance_message)
 
     except Exception as e:
-        # Print exception message
+        # Handle any exception and print the error message
         print(e)
 
 if __name__ == "__main__":
