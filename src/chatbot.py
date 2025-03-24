@@ -128,6 +128,25 @@ def make_deposit(account_number: int, amount: float) -> str:
 
     return f"You have made a deposit of ${amount:,.2f} to account {account_number}."
 
+def get_task() -> str:
+    """
+    Prompts the user to enter a task, validates it, and returns the task 
+    in lowercase.
+
+    Returns:
+        str: The valid task entered by the user in lowercase.
+
+    Raises:
+        ValueError: If the task entered is not in the VALID_TASKS list.
+    """
+    task_input = input("What would you like to do (balance/deposit/exit)?: ")
+    task = task_input.lower()
+
+    if task not in VALID_TASKS:
+        raise ValueError(f'"{task_input}" is an unknown task.')
+
+    return task
+
 def chatbot():
     """Performs the Chatbot functionality."""
     COMPANY_NAME = "PiXELL River Financial"
