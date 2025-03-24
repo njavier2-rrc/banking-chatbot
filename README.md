@@ -18,3 +18,27 @@ versions.
 ## Author
 
 Nicholas Javier
+
+## Reflection
+
+### 1. Identify any challenges or issues you encountered while writing your functions.
+
+- Making sure the input validation was working properly.
+- Formatting the output correctly, especially the deposit message.
+- Following the flowchart and making sure the chatbot worked as expected.
+
+### 2. Discuss the benefits and challenges of developing and using unit tests.
+
+#### Benefits
+
+- Helped catch the errors early.
+- Made sure each of the functions were working before testing the full
+program.
+- Improved my understanding of testing and validation.
+
+#### Challenges
+
+- Keeping the tests organized and easy to read.
+- Writing the exact error messages as expected in the tests.
+- Understanding how to properly format the currency with commas in the
+deposit function.
