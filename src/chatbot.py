@@ -72,6 +72,30 @@ def get_amount() -> float:
 
     return amount
 
+def get_balance(account_number: int) -> str:
+    """
+    Returns the balance message for the specified account number.
+
+    Parameters:
+        account_number (int): The account number to check.
+
+    Returns:
+        str: The balance message formatted as currency.
+
+    Raises:
+        TypeError: If the account number is not an int type.
+        ValueError: If the account number does not exist in ACCOUNTS.
+    """
+    if not isinstance(account_number, int):
+        raise TypeError("Account number must be an int type.")
+
+    if account_number not in ACCOUNTS:
+        raise ValueError("Account number does not exist.")
+
+    balance = ACCOUNTS[account_number]["balance"]
+    return f"Your current balance for account {account_number} is ${balance:,.2f}."
+
+
 def chatbot():
     """Performs the Chatbot functionality."""
     COMPANY_NAME = "PiXELL River Financial"
