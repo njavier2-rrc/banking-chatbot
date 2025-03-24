@@ -158,5 +158,42 @@ def chatbot():
     # Print thank you message
     print(f"Thank you for banking with {COMPANY_NAME}.")
 
+COMPANY_NAME = "PiXELL River Financial"
+
+# Print welcome message
+print(f"Welcome! I'm the {COMPANY_NAME} Chatbot! Let's get chatting!")
+
+while True:
+    try:
+        # Get the task
+        task = get_task()
+
+        # Check if task is exit
+        if task == 'exit':
+            # Print thank you message
+            print(f"Thank you for banking with {COMPANY_NAME}.")
+            break
+
+        # Get the account number
+        account_number = get_account_number()
+
+        # Check if task is deposit
+        if task == 'deposit':
+            # Get the amount to deposit
+            amount = get_amount()
+            # Make the deposit
+            deposit_message = make_deposit(account_number, amount)
+            # Print deposit message
+            print(deposit_message)
+        else:
+            # Get the balance message
+            balance_message = get_balance(account_number)
+            # Print balance message
+            print(balance_message)
+
+    except Exception as e:
+        # Print exception message
+        print(e)
+
 if __name__ == "__main__":
     chatbot()
